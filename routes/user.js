@@ -2,6 +2,7 @@ const _ = require('lodash');
 const app = require('express');
 const router =  app.Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const {User, userValidation} = require('../models/user');
 
 router.get('/', async (req,res) => {
@@ -30,11 +31,12 @@ router.post('/',  async (req, res) => {
     res.send(user.genToken());
 });
 
-//Need to be Authorized to delete account.
 router.delete('/', async (req, res) => {
-    if (!req.body.email) return res.status(400).send('Email Required'); 
-    const user = await User.deleteOne({ email: req.body.email });
-    res.send(user);
+    const token = req.header('x-auth-token');
+    if (!token) return res.status(400).send('No auth token');
+    const decoded = jwt.decode(token, 'secret');
+    const result = await User.deleteOne({ _id: decoded.id });
+    res.send(result);
 });
 
 module.exports = router;
