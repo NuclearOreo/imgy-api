@@ -17,8 +17,8 @@ router.get('/', async (req,res) => {
 });
 
 router.post('/',  async (req, res) => {
-    const isValid = userValidation(req.body);
-    if (isValid.error) return res.status(400).send(isValid.error.details[0].message);
+    const {error} = userValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
     let user = await User.findOne({email: req.body.email});
     if (user) return res.status(400).send('Email already exists');
@@ -35,7 +35,8 @@ router.delete('/', async (req, res) => {
     const token = req.header('x-auth-token');
     if (!token) return res.status(400).send('No auth token');
     const decoded = jwt.decode(token, 'secret');
-    const result = await User.deleteOne({ _id: decoded.id });
+    if (!decoded) return res.status(400).send('Bad token'); 
+    const result = await User.deleteOne({ id: decoded.id });
     res.send(result);
 });
 
