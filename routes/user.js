@@ -4,6 +4,7 @@ const router =  app.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {User, userValidation} = require('../models/user');
+const config = require('config');
 
 router.get('/', async (req,res) => {
     let users;
@@ -41,7 +42,7 @@ router.delete('/', async (req, res) => {
     const token = req.header('x-auth-token');
     if (!token) return res.status(400).send('No auth token');
 
-    const decoded = jwt.decode(token, 'secret');
+    const decoded = jwt.decode(token, config.get('jwtPrivateKey'));
     if (!decoded) return res.status(400).send('Bad token'); 
 
     try {

@@ -2,6 +2,12 @@ const express = require('express');
 const app =  express();
 const mongoose = require('mongoose');
 const user = require('./routes/user');
+const config = require('config');
+
+if (!config.get('jwtPrivateKey')) {
+    console.log('Set Enviroment Key');
+    process.exit(1);
+}
 
 mongoose.connect('mongodb://localhost/imgy')
 .then(console.log('Conneted to mongodb....'))
