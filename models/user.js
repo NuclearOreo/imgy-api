@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.genToken = function () {
-    const token = jwt.sign({id: this._id, email: this.email}, config.get('jwtPrivateKey'));
+    const token = jwt.sign({id: this._id, username:this.username, email: this.email,}, config.get('jwtPrivateKey'));
     return token;
 }
 
