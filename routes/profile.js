@@ -18,4 +18,11 @@ router.get('/', async (req,res) => {
     res.send(profiles);
 });
 
+router.post('/', async (req, res) => {
+    const {error} = profileValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    res.send(req.body);
+});
+
 module.exports = router;
