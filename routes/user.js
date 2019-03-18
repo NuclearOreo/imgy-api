@@ -15,7 +15,7 @@ router.get('/', async (req,res) => {
         return res.status(500).send(ex);
     }
 
-    const result = _.map(users, _.partialRight(_.pick, ['_id', 'email']));
+    const result = _.map(users, _.partialRight(_.pick, ['_id', 'username', 'email']));
     res.send(result);
 });
 
@@ -26,7 +26,7 @@ router.post('/',  async (req, res) => {
     let user = await User.findOne({email: req.body.email});
     if (user) return res.status(409).send('Email already exists');
 
-    user = new User(_.pick(req.body, ['email', 'password']));
+    user = new User(_.pick(req.body, ['email', 'password', 'username']));
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
 
