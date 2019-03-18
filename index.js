@@ -2,6 +2,7 @@ const express = require('express');
 const app =  express();
 const mongoose = require('mongoose');
 const user = require('./routes/user');
+const profile = require('./routes/profile');
 const config = require('config');
 
 if (!config.get('jwtPrivateKey')) {
@@ -15,6 +16,7 @@ mongoose.connect('mongodb://localhost/imgy')
 
 app.use(express.json());
 app.use('/api/users', user);
+app.use('/api/profiles', profile);
 
 app.get('/', (req, res) => {
     res.send('Connection is Working');
