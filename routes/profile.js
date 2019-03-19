@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const app = require('express');
 const router =  app.Router();
-const { Profile, profileValidation } = require('../models/profile');
+const {Profile, profileValidation} = require('../models/profile');
 const auth = require('../middleware/auth');
 
 router.get('/', async (req,res) => {
@@ -29,6 +29,15 @@ router.post('/', auth, async (req, res) => {
         newprofile = new Profile(_.pick(req.body, ['userId', 'firstname', 'lastname', 'street', 'city', 'zip']));
         await newprofile.save();
         res.send(newprofile);
+    } catch (ex) {
+        res.status(500).send(ex);
+    }
+});
+
+router.delete('/', auth, async (req, res) => {
+    try {
+        const result = await Profile.deleteOne({ userId: req.body.userId });
+        res.send(result);
     } catch (ex) {
         res.status(500).send(ex);
     }
