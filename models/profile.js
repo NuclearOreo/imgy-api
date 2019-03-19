@@ -4,7 +4,7 @@ Joi.objectId = require('joi-objectid')(Joi);
 
 const profileSchema = new mongoose.Schema({
     userId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     fistname : {
