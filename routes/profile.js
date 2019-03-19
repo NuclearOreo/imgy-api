@@ -2,6 +2,7 @@ const _ = require('lodash');
 const app = require('express');
 const router =  app.Router();
 const {Profile, profileValidation} = require('../models/profile');
+const auth = require('../middleware/auth');
 
 router.get('/', async (req,res) => {
     let profiles;
@@ -18,7 +19,9 @@ router.get('/', async (req,res) => {
     res.send(profiles);
 });
 
-router.post('/', async (req, res) => {
+
+
+router.post('/', auth, async (req, res) => {
     const {error} = profileValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
