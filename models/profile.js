@@ -7,7 +7,7 @@ const profileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    fistname : {
+    firstname : {
         type: String,
         required: true
     },
@@ -32,7 +32,7 @@ function profileValidation(profile) {
         lastname: Joi.string().min(3).required(),
         street: Joi.string(),
         city: Joi.string(),
-        zip: Joi.string(),
+        zip: Joi.number(),
         posts: Joi.array().items(Joi.objectId()),
         comments: Joi.array().items(Joi.objectId())
     };
