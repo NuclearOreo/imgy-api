@@ -23,7 +23,14 @@ router.post('/', auth, async (req, res) => {
     const {error} = profileValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    res.send(req.body);
+    const profile = await Profile.findOne({ userId: req.body.userId });
+    if (profile) return res.status(400).send('Profile exists');
+
+    try {
+        res.send(req.body);
+    } catch (ex) {
+        res.status(500).send(ex);
+    }
 });
 
 module.exports = router;

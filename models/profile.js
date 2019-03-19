@@ -32,7 +32,7 @@ function profileValidation(profile) {
         lastname: Joi.string().min(3).required(),
         street: Joi.string(),
         city: Joi.string(),
-        zip: Joi.number(),
+        zip: Joi.string(),
         posts: Joi.array().items(Joi.objectId()),
         comments: Joi.array().items(Joi.objectId())
     };
