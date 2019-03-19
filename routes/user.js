@@ -7,16 +7,23 @@ const {User, userValidation} = require('../models/user');
 const config = require('config');
 
 router.get('/', async (req,res) => {
-    let users;
     try {
-        if (req.body.email) users = await User.find({ email: req.body.email });
-        else users = await User.find(); 
+       let users = await User.find();
+       users = _.map(users, _.partialRight(_.pick, ['_id', 'username', 'email']));
+       res.send(users);
     } catch (ex) {
         return res.status(500).send(ex);
     }
+});
 
-    const result = _.map(users, _.partialRight(_.pick, ['_id', 'username', 'email']));
-    res.send(result);
+router.get('/:id', async (req,res) => {
+    try {
+       let user = await User.findOne({ _id: req.params.id });
+       user = _.pick(user, ['_id', 'username', 'email'])
+       res.send(user);
+    } catch (ex) {
+        return res.status(500).send(ex);
+    }
 });
 
 router.post('/',  async (req, res) => {
