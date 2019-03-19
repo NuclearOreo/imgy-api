@@ -5,18 +5,21 @@ const {Profile, profileValidation} = require('../models/profile');
 const auth = require('../middleware/auth');
 
 router.get('/', async (req,res) => {
-    let profiles;
-    
     try {
-        if (req.body.email) profiles = await Profile.find({ 
-            _id: req.body.id, firstname: req.body.firstname, lastname: req.body.lastname
-        });
-        else profiles= await Profile.find(); 
+        const profiles = await Profile.find();
+        res.send(profiles);
     } catch (ex) {
-        return res.status(500).send(ex);
+        res.status(500).send(ex);
     }
+});
 
-    res.send(profiles);
+router.get('/:userid', async (req,res) => {
+    try {
+        const profile = await Profile.findOne({ userId: req.params.userid });
+        res.send(profile);
+    } catch (ex) {
+        res.status(500).send(ex);
+    }
 });
 
 router.post('/', auth, async (req, res) => {
