@@ -3,6 +3,7 @@ const app =  express();
 const mongoose = require('mongoose');
 const user = require('./routes/user');
 const profile = require('./routes/profile');
+const post = require('./routes/post');
 const auth = require('./routes/auth');
 const config = require('config');
 
@@ -16,9 +17,10 @@ mongoose.connect('mongodb://localhost/imgy')
 .catch(err => console.error('Connection to mongodb failed....'));
 
 app.use(express.json());
+app.use('/api/auth/login', auth)
 app.use('/api/users', user);
 app.use('/api/profiles', profile);
-app.use('/api/auth/login', auth)
+app.use('/api/posts', post);
 
 app.get('/', (req, res) => {
     res.send('Connection is Working');
