@@ -18,8 +18,8 @@ const Post = mongoose.model('Post', postSchema);
 
 function postValidation(post) {
     const schema = {
-        username: Joi.string().required(),
-        imageUrl: Joi.string().required(),
+        username: Joi.string().min(3).required(),
+        imageUrl: Joi.string().uri().required(),
         comments: Joi.array().items(Joi.objectId())
     }
     return Joi.validate(post, schema);

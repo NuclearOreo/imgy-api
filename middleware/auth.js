@@ -10,6 +10,7 @@ module.exports = async function (req, res, next) {
         const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
         const user = await User.findOne({ _id: decoded.id });
         if (!user) return res.status(500).send('User does not exist');
+        req.body.username = user.username;
         req.body.userId =  user._id.toString();
         next(); 
     } catch (ex) {
