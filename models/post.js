@@ -11,7 +11,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    comments: [mongoose.Schema.Type.ObjectId]
+    comments: [mongoose.Schema.Types.ObjectId,]
 });
 
 const Post = mongoose.model('Post', postSchema);
