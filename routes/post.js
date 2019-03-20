@@ -3,6 +3,8 @@ const app = require('express');
 const router = app.Router();
 const {Post, postValidation} = require('../models/post');
 const auth = require('../middleware/auth');
+const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 
 router.get('/', async (req,res) => {
     try {
@@ -22,6 +24,15 @@ router.get('/:username', async (req,res) => {
     }
 });
 
+router.get('/id/:id', async (req,res) => {
+    try {
+        const post = await Post.findOne({ _id: req.params.id });
+        res.send(post);
+    } catch(ex) {
+        res.status(500).send(ex);
+    }
+});
+
 router.post('/:username', auth, async (req,res) => {
     if (req.params.username !== req.body.username) return res.status(400).send('Not Authorized');
 
@@ -33,6 +44,21 @@ router.post('/:username', auth, async (req,res) => {
         const post = new Post(newpost);
         await post.save();
         res.send(post);
+    } catch (ex) {
+        res.status(500).send(ex);
+    }
+});
+
+router.delete('/:id', auth, async (req,res) => {
+    const {error} = Joi.validate(req.params, { id: Joi.objectId() });
+    if (error) return res.status(400).send(error.details[0].message);
+
+    try {
+        const post = await Post.findById(req.params.id);
+        if (!post) return res.status(400).send('Post does not exist');
+
+        const result = await Post.findOneAndDelete({ _id: req.params.id });
+        res.send(result);
     } catch (ex) {
         res.status(500).send(ex);
     }
