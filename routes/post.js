@@ -13,6 +13,15 @@ router.get('/', async (req,res) => {
     }
 });
 
+router.get('/:username', async (req,res) => {
+    try {
+        const posts = await Post.find({ username: req.params.username });
+        res.send(posts);
+    } catch(ex) {
+        res.status(500).send(ex);
+    }
+});
+
 router.post('/:username', auth, async (req,res) => {
     if (req.params.username !== req.body.username) return res.status(400).send('Not Authorized');
 
