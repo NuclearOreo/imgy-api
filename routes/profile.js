@@ -23,7 +23,7 @@ router.get('/:userid', async (req,res) => {
 });
 
 router.post('/', auth, async (req, res) => {
-    const {error} = profileValidation(req.body);
+    const {error} = profileValidation(_.pick(req.body, ['userId', 'firstname', 'lastname', 'street', 'city', 'zip']));
     if (error) return res.status(400).send(error.details[0].message);
 
     try {
