@@ -52,10 +52,13 @@ router.post('/:username', auth, async (req,res) => {
 router.delete('/:id', auth, async (req,res) => {
     const {error} = Joi.validate(req.params, { id: Joi.objectId() });
     if (error) return res.status(400).send(error.details[0].message);
-
+    
     try {
+
         const post = await Post.findById(req.params.id);
         if (!post) return res.status(400).send('Post does not exist');
+
+        if (post.username !== req.body.username) return res.status(400).send('Not authorized to delete');
 
         const result = await Post.findOneAndDelete({ _id: req.params.id });
         res.send(result);
