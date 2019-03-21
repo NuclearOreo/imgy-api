@@ -11,7 +11,7 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    post: {
+    postId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     }
@@ -23,7 +23,7 @@ function commentValidation(comment) {
     const schema = {
         username: Joi.string().min(3).required(),
         comment: Joi.string().min(1).required(),
-        post: Joi.objectid().required()
+        postId: Joi.objectid().required()
     };
     return Joi.validate(comment, schema);
 };
