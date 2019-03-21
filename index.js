@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const user = require('./routes/user');
 const profile = require('./routes/profile');
 const post = require('./routes/post');
+const comment = require('./routes/comment');
 const auth = require('./routes/auth');
 const config = require('config');
 
@@ -21,6 +22,7 @@ app.use('/api/auth/login', auth)
 app.use('/api/users', user);
 app.use('/api/profiles', profile);
 app.use('/api/posts', post);
+app.use('/api/comments', comment);
 
 app.get('/', (req, res) => {
     res.send('Connection is Working');
