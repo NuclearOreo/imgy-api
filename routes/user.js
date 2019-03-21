@@ -16,7 +16,17 @@ router.get('/', async (req,res) => {
     }
 });
 
-router.get('/:id', async (req,res) => {
+router.get('/:username', async (req,res) => {
+    try {
+       let user = await User.findOne({ username: req.params.username });
+       user = _.pick(user, ['_id', 'username', 'email'])
+       res.send(user);
+    } catch (ex) {
+        return res.status(500).send(ex);
+    }
+});
+
+router.get('/id/:id', async (req,res) => {
     try {
        let user = await User.findOne({ _id: req.params.id });
        user = _.pick(user, ['_id', 'username', 'email'])

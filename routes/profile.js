@@ -13,9 +13,9 @@ router.get('/', async (req,res) => {
     }
 });
 
-router.get('/:userid', async (req,res) => {
+router.get('/:username', async (req,res) => {
     try {
-        const profile = await Profile.findOne({ userId: req.params.userid });
+        const profile = await Profile.findOne({ username: req.params.username });
         res.send(profile);
     } catch (ex) {
         res.status(500).send(ex);
@@ -23,13 +23,13 @@ router.get('/:userid', async (req,res) => {
 });
 
 router.post('/', auth, async (req, res) => {
-    const {error} = profileValidation(_.pick(req.body, ['userId', 'firstname', 'lastname', 'street', 'city', 'zip']));
+    const {error} = profileValidation(_.pick(req.body, ['userId', 'username', 'firstname', 'lastname', 'street', 'city', 'zip']));
     if (error) return res.status(400).send(error.details[0].message);
 
     try {
-        const profile = await Profile.findOne({ userId: req.body.userId });
+        const profile = await Profile.findOne({ username: req.body.username });
         if (profile) return res.status(409).send('Profile exists');
-        newprofile = new Profile(_.pick(req.body, ['userId', 'firstname', 'lastname', 'street', 'city', 'zip']));
+        newprofile = new Profile(_.pick(req.body, ['userId', 'username', 'firstname', 'lastname', 'street', 'city', 'zip']));
         await newprofile.save();
         res.send(newprofile);
     } catch (ex) {

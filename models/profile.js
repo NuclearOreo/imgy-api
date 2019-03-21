@@ -7,6 +7,11 @@ const profileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
     firstname : {
         type: String,
         required: true
@@ -28,6 +33,7 @@ const Profile = mongoose.model('Profile', profileSchema);
 function profileValidation(profile) {
     const schema = {
         userId: Joi.objectId().required(),
+        username: Joi.string().required(),
         firstname: Joi.string().min(3).required(),
         lastname: Joi.string().min(3).required(),
         street: Joi.string(),
