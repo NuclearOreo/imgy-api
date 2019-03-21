@@ -13,7 +13,7 @@ if (!config.get('jwtPrivateKey')) {
     process.exit(1);
 }
 
-mongoose.connect('mongodb://localhost/imgy')
+mongoose.connect('mongodb://localhost/imgy', { useNewUrlParser: true, useCreateIndex: true })
 .then(console.log('Conneted to mongodb....'))
 .catch(err => console.error('Connection to mongodb failed....'));
 
