@@ -25,6 +25,9 @@ router.get('/:username', async (req,res) => {
 });
 
 router.get('/id/:id', async (req,res) => {
+    const {error} = Joi.validate(req.params, { id: Joi.objectId() });
+    if (error) return res.status(400).send('Invalid ID');
+
     try {
         const post = await Post.findOne({ _id: req.params.id });
         res.send(post);
