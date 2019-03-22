@@ -61,6 +61,26 @@ router.post('/:postId', auth, async (req, res) => {
     }
 });
 
+router.delete('/:id', auth, async (req,res) => {
+    const {error} = Joi.validate(req.params, { id: Joi.objectid() });
+    if (error) return res.status(400).send(error.details[0].message);
 
+    try {
+        const comment = await Comment.findOne({ _id: req.params.id });
+        const post = await Post.findOne({ _id: comment.postId });
+        
+        let postCommnents = post.comments;
+        _.remove(postCommnents, (n) => {
+            return n.toString() === req.params.id;
+        });
+
+        await Post.findOneAndUpdate({ _id: comment.postId }, { comments: postCommnents });
+        const result = await Comment.deleteOne({ _id: req.params.id });
+
+        res.send(result);
+    } catch(ex) {
+        res.status(500).send(ex);
+    }
+});
 
 module.exports = router;
