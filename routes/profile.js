@@ -50,7 +50,7 @@ router.put('/', auth, async (req, res) => {
 
 router.delete('/', auth, async (req, res) => {
     try {
-        const result = await Profile.findOneAndDelete(req.body.userId);
+        const result = await Profile.deleteOne({ userId: req.body.userId });
         res.send(result);
     } catch (ex) {
         res.status(500).send(ex);
