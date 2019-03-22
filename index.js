@@ -24,9 +24,5 @@ app.use('/api/profiles', profile);
 app.use('/api/posts', post);
 app.use('/api/comments', comment);
 
-app.get('/', (req, res) => {
-    res.send('Connection is Working');
-});
-
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
