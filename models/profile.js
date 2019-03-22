@@ -23,9 +23,7 @@ const profileSchema = new mongoose.Schema({
     street: String,
     city: String,
     State: String,
-    zip: Number,
-    posts: [String],
-    comments: [String] 
+    zip: Number
 });
 
 const Profile = mongoose.model('Profile', profileSchema);
@@ -38,9 +36,7 @@ function profileValidation(profile) {
         lastname: Joi.string().min(3).required(),
         street: Joi.string(),
         city: Joi.string(),
-        zip: Joi.number(),
-        posts: Joi.array().items(Joi.objectId()),
-        comments: Joi.array().items(Joi.objectId())
+        zip: Joi.number()
     };
     return Joi.validate(profile, schema);
 }
