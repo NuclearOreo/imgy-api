@@ -5,6 +5,7 @@ const {User} = require('../models/user');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
+const asyncMiddleware = require('../middleware/async');
 const config = require('config');
 
 function validate(body) {
@@ -15,23 +16,19 @@ function validate(body) {
     return Joi.validate(body, schema);    
 }
 
-router.post('/', async (req, res) => {
+router.post('/', asyncMiddleware(async (req, res) => {
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    try {
-        const user = await User.findOne({ email: req.body.email });
-        if (!user) return res.status(401).send('Invalid email or password');
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) return res.status(401).send('Invalid email or password');
 
-        const result = await bcrypt.compare(req.body.password, user.password);
-        if (!result) return res.status(401).send('Invalid email or password');
+    const result = await bcrypt.compare(req.body.password, user.password);
+    if (!result) return res.status(401).send('Invalid email or password');
 
-        const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, config.get('jwtPrivateKey'));
-        res.send(token);
-    } catch (ex) {
-        res.status(500).send(ex);
-    }
-});
+    const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, config.get('jwtPrivateKey'));
+    res.send(token);
+}));
 
 module.exports = router;
 
