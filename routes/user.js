@@ -5,27 +5,26 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {User, userValidation} = require('../models/user');
 const config = require('config');
-const asyncMiddleware = require('../middleware/async');
 
-router.get('/', asyncMiddleware(async (req,res) => {
+router.get('/', async (req,res) => {
     let users = await User.find();
     users = _.map(users, _.partialRight(_.pick, ['_id', 'username', 'email']));
     res.send(users);
-}));
+});
 
-router.get('/:username', asyncMiddleware(async (req,res) => {
+router.get('/:username', async (req,res) => {
     let user = await User.findOne({ username: req.params.username });
     user = _.pick(user, ['_id', 'username', 'email'])
     res.send(user);
-}));
+});
 
-router.get('/id/:id', asyncMiddleware(async (req,res) => {
+router.get('/id/:id', async (req,res) => {
     let user = await User.findOne({ _id: req.params.id });
     user = _.pick(user, ['_id', 'username', 'email'])
     res.send(user);
-}));
+});
 
-router.post('/', asyncMiddleware(async (req, res) => {
+router.post('/', async (req, res) => {
     const {error} = userValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -42,9 +41,9 @@ router.post('/', asyncMiddleware(async (req, res) => {
 
     await user.save();
     res.send(user.genToken());
-}));
+});
 
-router.delete('/', asyncMiddleware(async (req, res) => {
+router.delete('/', async (req, res) => {
     const token = req.header('x-auth-token');
     if (!token) return res.status(400).send('No auth token');
 
@@ -53,6 +52,6 @@ router.delete('/', asyncMiddleware(async (req, res) => {
 
     const result = await User.deleteOne({ _id: decoded.id });
     res.send(result);
-}));
+});
 
 module.exports = router;

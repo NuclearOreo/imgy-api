@@ -5,7 +5,6 @@ const {User} = require('../models/user');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
-const asyncMiddleware = require('../middleware/async');
 const config = require('config');
 
 function validate(body) {
@@ -16,7 +15,7 @@ function validate(body) {
     return Joi.validate(body, schema);    
 }
 
-router.post('/', asyncMiddleware(async (req, res) => {
+router.post('/', async (req, res) => {
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -28,7 +27,7 @@ router.post('/', asyncMiddleware(async (req, res) => {
 
     const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, config.get('jwtPrivateKey'));
     res.send(token);
-}));
+});
 
 module.exports = router;
 
