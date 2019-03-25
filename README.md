@@ -28,7 +28,7 @@ All Endpoint for Post
 
 * [Get all Posts](docs/getAllPost.md) : `GET /api/posts`
 * [Get all Posts with a specific username](docs/getPostWithUsername.md) : `GET /api/posts/:username`
-* [Get a Post using an id](docs/users.js) : `GET /api/posts/id/:id`
+* [Get a Post using an id](docs/getPostWithID.md) : `GET /api/posts/id/:id`
 * [Create a Post](docs/users.js) : `POST /api/posts/:username`
 * [Delete a Post](docs/users.js) : `DELETE /api/posts/:id`
 
