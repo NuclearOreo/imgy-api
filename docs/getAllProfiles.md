@@ -1,4 +1,4 @@
-# Get All Users
+# Get All Profiles
 
 All profiles of all Users
 
