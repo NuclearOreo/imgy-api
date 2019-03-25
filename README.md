@@ -4,7 +4,7 @@ Documentaion of my first API using express. Justs going to detail the all the ro
 
 ## User Endpoints
 
-All Endpoint for Users
+All Endpoint for User
 
 * [Get all Users](docs/users.js) : `GET /api/users`
 * [Get User by username](docs/users.js) : `GET /api/users/:username`
@@ -15,13 +15,23 @@ All Endpoint for Users
 
 ## Profile Endpoints
 
-All Endpoint for profile
+All Endpoint for Profile
 
 * [Get all Profiles](docs/users.js) : `GET /api/profiles`
 * [Get profile by username](docs/users.js) : `GET /api/profiles/:username`
 * [Create new Profile](docs/users.js) : `POST /api/profiles`
 * [Update a Profile](docs/users.js) : `PUT /api/profiles`
 * [Remove a Profile](docs/users.js) : `DELETE /api/profiles`
+
+## Post Endpoints
+
+All Endpoint for Post
+
+* [Get all Post](docs/users.js) : `GET /api/posts`
+* [Get all Post with a specific username](docs/users.js) : `GET /api/posts/:username`
+* [Get a Post using an id](docs/users.js) : `GET /api/posts/id/:id`
+* [Create a Post](docs/users.js) : `POST /api/posts/:username`
+* [Delete a Post](docs/users.js) : `DELETE /api/posts/:id`
 
 
 ## ER Diagram and Schema
