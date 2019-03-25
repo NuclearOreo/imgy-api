@@ -2,7 +2,7 @@
 
 Update the Profile of the Authenticated User if and only if they are Owner.
 
-**URL** : `/api/profiles/:`
+**URL** : `/api/profiles`
 
 **Method** : `PUT`
 

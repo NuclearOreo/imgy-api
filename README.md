@@ -20,7 +20,7 @@ All Endpoint for Profile
 * [Get Profile by username](docs/getProfileByUsername.md) : `GET /api/profiles/:username`
 * [Create new Profile](docs/createProfile.md) : `POST /api/profiles`
 * [Update a Profile](docs/updateProfile.md) : `PUT /api/profiles`
-* [Remove a Profile](docs/users.js) : `DELETE /api/profiles`
+* [Remove a Profile](docs/deleteProfile.md) : `DELETE /api/profiles`
 
 ## Post Endpoints
 
