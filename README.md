@@ -38,7 +38,7 @@ All Endpoint for Comment
 
 * [Get all Comments](docs/getAllComments.md) : `GET /api/comments`
 * [Get a Comment with id](docs/getCommentwithID.md) : `GET /api/comments/:id`
-* [Get all Comments with a username](docs/users.js) : `GET /api/comments/username/:id`
+* [Get all Comments with a username](docs/getCommentWithUsername.md) : `GET /api/comments/username/:id`
 * [Create a new Comment](docs/users.js) : `POST /api/comments/:postId`
 * [Delete a Comment](docs/users.js) : `DELEte /api/comments/:id`
 
