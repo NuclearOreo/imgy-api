@@ -9,7 +9,7 @@ All Endpoint for User
 * [Get all Users](docs/getAllUsers.md) : `GET /api/users`
 * [Get User by username](docs/getUsersByUsername.md) : `GET /api/users/:username`
 * [Get User by id](docs/getUsersByID.md) : `GET /api/users/id/:id`
-* [Create new User](docs/users.js) : `POST /api/users`
+* [Create new User](docs/createUser.md) : `POST /api/users`
 * [Remove a User](docs/users.js) : `DELETE /api/users`
 
 ## Profile Endpoints
