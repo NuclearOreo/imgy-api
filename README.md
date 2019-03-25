@@ -12,7 +12,6 @@ All Endpoint for User
 * [Create new User](docs/users.js) : `POST /api/users`
 * [Remove a User](docs/users.js) : `DELETE /api/users`
 
-
 ## Profile Endpoints
 
 All Endpoint for Profile
@@ -33,6 +32,14 @@ All Endpoint for Post
 * [Create a Post](docs/users.js) : `POST /api/posts/:username`
 * [Delete a Post](docs/users.js) : `DELETE /api/posts/:id`
 
+## Comment Endpoints
+
+All Endpoint for Comment
+* [Get all Comments](docs/users.js) : `GET /api/comments`
+* [Get a Comment with id](docs/users.js) : `GET /api/comments/:id`
+* [Get all Comments with a username](docs/users.js) : `GET /api/comments/username/:id`
+* [Create a new Comment](docs/users.js) : `POST /api/comments/:postId`
+* [Delete a Comment](docs/users.js) : `DELEte /api/comments/:id`
 
 ## ER Diagram and Schema
 
