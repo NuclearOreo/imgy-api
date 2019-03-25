@@ -36,7 +36,7 @@ All Endpoint for Post
 
 All Endpoint for Comment
 
-* [Get all Comments](docs/users.js) : `GET /api/comments`
+* [Get all Comments](docs/getAllComments.md) : `GET /api/comments`
 * [Get a Comment with id](docs/users.js) : `GET /api/comments/:id`
 * [Get all Comments with a username](docs/users.js) : `GET /api/comments/username/:id`
 * [Create a new Comment](docs/users.js) : `POST /api/comments/:postId`
