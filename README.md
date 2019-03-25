@@ -2,7 +2,7 @@
 
 Documentaion of my first API using express. Justs going to detail the all the routes and their responses for my reference. 
 
-## Users Endpoints
+## User Endpoints
 
 All Endpoint for Users
 
@@ -10,7 +10,18 @@ All Endpoint for Users
 * [Get User by username](docs/users.js) : `GET /api/users/:username`
 * [Get User by id](docs/users.js) : `GET /api/users/id/:id`
 * [Create new User](docs/users.js) : `POST /api/users`
-* [Get remove User](docs/users.js) : `DELETE /api/users`
+* [Remove a User](docs/users.js) : `DELETE /api/users`
+
+
+## Profile Endpoints
+
+All Endpoint for profile
+
+* [Get all Profiles](docs/users.js) : `GET /api/profiles`
+* [Get profile by username](docs/users.js) : `GET /api/profiles/:username`
+* [Create new Profile](docs/users.js) : `POST /api/profiles`
+* [Update a Profile](docs/users.js) : `PUT /api/profiles`
+* [Remove a Profile](docs/users.js) : `DELETE /api/profiles`
 
 
 ## ER Diagram and Schema
