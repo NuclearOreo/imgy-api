@@ -32,7 +32,7 @@ Provide name of Account to be created.
 
 ## Success Response
 
-**Condition** : If everything is OK and an Account didn't exist for this User.
+**Condition** : If everything is OK and an User didn't exist.
 
 **Code** : `200`
 
