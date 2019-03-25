@@ -6,7 +6,7 @@ Documentaion of my first API using express. Justs going to detail the all the ro
 
 All Endpoint for User
 
-* [Get all Users](docs/users.js) : `GET /api/users`
+* [Get all Users](docs/getAllUsers.md) : `GET /api/users`
 * [Get User by username](docs/users.js) : `GET /api/users/:username`
 * [Get User by id](docs/users.js) : `GET /api/users/id/:id`
 * [Create new User](docs/users.js) : `POST /api/users`
@@ -17,7 +17,7 @@ All Endpoint for User
 All Endpoint for Profile
 
 * [Get all Profiles](docs/users.js) : `GET /api/profiles`
-* [Get profile by username](docs/users.js) : `GET /api/profiles/:username`
+* [Get Profile by username](docs/users.js) : `GET /api/profiles/:username`
 * [Create new Profile](docs/users.js) : `POST /api/profiles`
 * [Update a Profile](docs/users.js) : `PUT /api/profiles`
 * [Remove a Profile](docs/users.js) : `DELETE /api/profiles`
@@ -26,8 +26,8 @@ All Endpoint for Profile
 
 All Endpoint for Post
 
-* [Get all Post](docs/users.js) : `GET /api/posts`
-* [Get all Post with a specific username](docs/users.js) : `GET /api/posts/:username`
+* [Get all Posts](docs/users.js) : `GET /api/posts`
+* [Get all Posts with a specific username](docs/users.js) : `GET /api/posts/:username`
 * [Get a Post using an id](docs/users.js) : `GET /api/posts/id/:id`
 * [Create a Post](docs/users.js) : `POST /api/posts/:username`
 * [Delete a Post](docs/users.js) : `DELETE /api/posts/:id`
