@@ -26,7 +26,7 @@ All Endpoint for Profile
 
 All Endpoint for Post
 
-* [Get all Posts](docs/users.js) : `GET /api/posts`
+* [Get all Posts](docs/getAllPost.md) : `GET /api/posts`
 * [Get all Posts with a specific username](docs/users.js) : `GET /api/posts/:username`
 * [Get a Post using an id](docs/users.js) : `GET /api/posts/id/:id`
 * [Create a Post](docs/users.js) : `POST /api/posts/:username`
