@@ -1,7 +1,6 @@
 # Get All Users
 
-Get the details of the currently Authenticated User along with basic
-subscription information.
+Get the details of all Users
 
 **URL** : `/api/users`
 

@@ -16,7 +16,7 @@ All Endpoint for User
 
 All Endpoint for Profile
 
-* [Get all Profiles](docs/users.js) : `GET /api/profiles`
+* [Get all Profiles](docs/getAllProfiles.md) : `GET /api/profiles`
 * [Get Profile by username](docs/users.js) : `GET /api/profiles/:username`
 * [Create new Profile](docs/users.js) : `POST /api/profiles`
 * [Update a Profile](docs/users.js) : `PUT /api/profiles`

@@ -22,7 +22,7 @@ const profileSchema = new mongoose.Schema({
     },
     street: String,
     city: String,
-    State: String,
+    state: String,
     zip: Number
 });
 
@@ -36,6 +36,7 @@ function profileValidation(profile) {
         lastname: Joi.string().min(3).required(),
         street: Joi.string(),
         city: Joi.string(),
+        state: Joi.string(),
         zip: Joi.number()
     };
     return Joi.validate(profile, schema);

@@ -15,12 +15,12 @@ router.get('/:username', async (req,res) => {
 });
 
 router.post('/', auth, async (req, res) => {
-    const {error} = profileValidation(_.pick(req.body, ['userId', 'username', 'firstname', 'lastname', 'street', 'city', 'zip']));
+    const {error} = profileValidation(_.pick(req.body, ['userId', 'username', 'firstname', 'lastname', 'street', 'city', 'state', 'zip']));
     if (error) return res.status(400).send(error.details[0].message);
 
     const profile = await Profile.findOne({ username: req.body.username });
     if (profile) return res.status(409).send('Profile exists');
-    newprofile = new Profile(_.pick(req.body, ['userId', 'username', 'firstname', 'lastname', 'street', 'city', 'zip']));
+    newprofile = new Profile(_.pick(req.body, ['userId', 'username', 'firstname', 'lastname', 'street', 'city', 'state', 'zip']));
     await newprofile.save();
     res.send(newprofile);
 });
