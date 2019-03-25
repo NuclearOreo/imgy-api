@@ -8,7 +8,7 @@ All Endpoint for User
 
 * [Get all Users](docs/getAllUsers.md) : `GET /api/users`
 * [Get User by username](docs/getUsersByUsername.md) : `GET /api/users/:username`
-* [Get User by id](docs/users.js) : `GET /api/users/id/:id`
+* [Get User by id](docs/getUsersByID.md) : `GET /api/users/id/:id`
 * [Create new User](docs/users.js) : `POST /api/users`
 * [Remove a User](docs/users.js) : `DELETE /api/users`
 

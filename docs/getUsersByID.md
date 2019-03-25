@@ -2,9 +2,9 @@
 
 Show a single Account if current User has access permissions to it.
 
-**URL** : `/api/users/:username`
+**URL** : `/api/users/id/:id`
 
-**URL Parameters** : `username=[string]` where `username` is the username of the User on the
+**URL Parameters** : `id=[string]` where `ud` is the username of the User on the
 server.
 
 **Method** : `GET`
