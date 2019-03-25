@@ -1,4 +1,4 @@
-# Delete User
+# Delete Profile
 
 Delete the Profile of the Authenticated User if they are Owner.
 
