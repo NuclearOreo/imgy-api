@@ -16,17 +16,18 @@ Delete the User of the Authenticated User if they are Owner.
 
 **Code** : `200`
 
-**Content** : ```json
+**Content Example**  
+
+```json
 {
     "n": 1,
     "ok": 1,
     "deletedCount": 1
-}```
+}
+```
 
 ## Error Responses
 
 **Condition** : If there's no Auth Token
 
 **Code** : `400`
-
-**Content** : `{}`
