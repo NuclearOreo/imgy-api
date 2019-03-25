@@ -1,6 +1,6 @@
 # Show Single User
 
-Show a single Account if current User has access permissions to it.
+Show a single User.
 
 **URL** : `/api/users/:username`
 

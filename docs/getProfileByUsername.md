@@ -1,6 +1,6 @@
 # Show Single Profile
 
-Show a single Account if current User has access permissions to it.
+Show a single Profile.
 
 **URL** : `/api/profiles/:username`
 
