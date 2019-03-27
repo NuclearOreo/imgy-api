@@ -1,6 +1,10 @@
 const express = require('express');
 const app =  express();
 
+app.get('/', (req,res) => {
+    res.send('The Api is live')
+});
+
 require('./startup/logging')();
 require('./startup/database')();
 require('./startup/routes')(app);
