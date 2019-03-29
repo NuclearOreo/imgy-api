@@ -40,7 +40,8 @@ router.post('/', async (req, res) => {
     user.password = await bcrypt.hash(user.password, salt);
 
     await user.save();
-    res.send(user.genToken());
+    const token = user.genToken();
+    res.send({ token });
 });
 
 router.delete('/', async (req, res) => {
