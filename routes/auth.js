@@ -15,7 +15,7 @@ function validate(body) {
     return Joi.validate(body, schema);    
 }
 
-router.post('/', async (req, res) => {
+router.post('/login', async (req, res) => {
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -27,6 +27,13 @@ router.post('/', async (req, res) => {
 
     const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, config.get('jwtPrivateKey'));
     res.send({token});
+});
+
+router.post('/verify', async (req, res) => {
+    const {error} = Joi.validate(req.body, { token: Joi.string().min(1) });
+    if (error) return res.status(400).send(error.details[0].message);
+    const decode = jwt.verify(req.body.token, config.get('jwtPrivateKey'));
+    res.send(decode);
 });
 
 module.exports = router;

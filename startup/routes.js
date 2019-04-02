@@ -11,7 +11,7 @@ const error = require('../middleware/error');
 module.exports = function(app) {
     app.use(cors());
     app.use(express.json());
-    app.use('/api/auth/login', auth)
+    app.use('/api/auth', auth)
     app.use('/api/users', user);
     app.use('/api/profiles', profile);
     app.use('/api/posts', post);
