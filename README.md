@@ -46,6 +46,7 @@ All Endpoint for Comment
 
 EndPoint for Authorization
 * [Login](docs/login.md) : `POST /api/auth/login`
+* [Verify](docs/verify.md) : `POST /api/auth/verify`
 
 ## ER Diagram and Schema
 
