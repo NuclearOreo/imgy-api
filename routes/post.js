@@ -21,7 +21,8 @@ router.get('/id/:id', async (req,res) => {
     if (error) return res.status(400).send(error.details[0].message);
 
     const post = await Post.findOne({ _id: req.params.id });
-    res.send(post);
+    const filtered = _.pick(post, ['comments', '_id', 'imageUrl', 'username']);
+    res.send(filtered);
 });
 
 router.post('/:username', auth, async (req,res) => {
