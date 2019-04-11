@@ -2,6 +2,7 @@ const _ = require('lodash');
 const app = require('express');
 const router = app.Router();
 const {Post, postValidation} = require('../models/post');
+const {Comment} = require('../models/comment');
 const auth = require('../middleware/auth');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
@@ -45,6 +46,10 @@ router.delete('/:id', auth, async (req,res) => {
     if (!post) return res.status(400).send('Post does not exist');
 
     if (post.username !== req.body.username) return res.status(400).send('Not authorized to delete');
+
+    for(let comments of post.comments) {
+        await Comment.findOneAndDelete({ _id: comments });
+    }
 
     const result = await Post.deleteOne({ _id: req.params.id });
     res.send(result);
